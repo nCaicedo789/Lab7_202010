@@ -41,7 +41,9 @@ def newCatalog():
     Inicializa el catálogo y retorna el catalogo inicializado.
     """
     rgraph = g.newGraph(5500,compareByKey)
-    catalog = {'reviewGraph':rgraph}    
+    catalog = {'delayGraph':rgraph, 'visitedMap':None}
+    search['visitedMap'] = map.newMap(capacity=prime, maptype='PROBING', comparefunction=graph['comparefunction'])
+    map.put(search['visitedMap'],source, {'marked':True,'edgeTo':None})    
     return catalog
 
 
@@ -58,15 +60,15 @@ def addReviewEdge (catalog, row):
     """
     Adiciona un enlace para almacenar una revisión
     """
-    g.addEdge (catalog['reviewGraph'], row['book_id'], row['user_id'], row['rating'])
+    g.addEdge (catalog['delayGraph'], row['book_id'], row['DEST'], row['rating'])
 
 
 def countNodesEdges (catalog):
     """
     Retorna la cantidad de nodos y enlaces del grafo de revisiones
     """
-    nodes = g.numVertex(catalog['reviewGraph'])
-    edges = g.numEdges(catalog['reviewGraph'])
+    nodes = g.numVertex(catalog['delayGraph'])
+    edges = g.numEdges(catalog['delayGraph'])
 
     return nodes,edges
 

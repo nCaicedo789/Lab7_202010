@@ -124,3 +124,5 @@ def adjacents (graph, vertex ):
         return alt.adjacents(graph, vertex)
 
 
+
+
