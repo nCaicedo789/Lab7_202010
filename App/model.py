@@ -42,9 +42,11 @@ def newCatalog():
     """
     rgraph = g.newGraph(5500,compareByKey)
     catalog = {'delayGraph':rgraph, 'visitedMap':None}
-    search['visitedMap'] = map.newMap(capacity=prime, maptype='PROBING', comparefunction=graph['comparefunction'])
-    map.put(search['visitedMap'],source, {'marked':True,'edgeTo':None})    
+    rgraph['visitedMap'] = map.newMap(capacity=prime, maptype='PROBING', comparefunction=graph['comparefunction'])
     return catalog
+
+def addMark(catlog, source):
+    map.put(rgraph['visitedMap'],source, {'marked':True,'edgeTo':None})
 
 
 def addReviewNode (catalog, row):
