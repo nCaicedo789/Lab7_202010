@@ -84,6 +84,7 @@ def depth_first_search(catalog,node):
             record={'nodo':li_node, 'stado':True, 'predecesor':node}
             map.put(catalog['visitedMap'],record['nodo'],record)
             depth_first_search(catalog,li_node)
+            print('en dfs')
             
 
 def countConnectedComponents (catalog):
@@ -96,6 +97,7 @@ def countConnectedComponents (catalog):
         node=lt.getElement(list_nodes,i)
         if not map.contains(catalog['visitedMap'],node):
             depth_first_search(catalog,node)
+            print('en cc')
             counter+=1
     return counter
 
