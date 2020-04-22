@@ -43,7 +43,7 @@ def newCatalog():
     rgraph = g.newGraph(111353,compareByKey)
     prime = 111353 * 2
     catalog = {'delayGraph':rgraph, 'visitedMap':None}
-    rgraph['visitedMap'] = map.newMap(capacity=prime)
+    catalog['visitedMap'] = map.newMap(capacity=prime, maptype='PROBING')
     return catalog
 
 
