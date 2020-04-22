@@ -55,7 +55,7 @@ def loadBookReviews (catalog, sep=';'):
     referencia al libro que se esta procesando.
     """
     t1_start = process_time() #tiempo inicial
-    booksfile = cf.data_dir + 'GoodReads/book_reviews.csv'
+    booksfile = cf.data_dir + 'GoodReads/flights_edges.csv'
     dialect = csv.excel()
     dialect.delimiter=sep
     with open(booksfile, encoding="utf-8-sig") as csvfile:
