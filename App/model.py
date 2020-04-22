@@ -62,7 +62,7 @@ def addReviewEdge (catalog, row):
     """
     Adiciona un enlace para almacenar una revisión
     """
-    g.addEdge (catalog['delayGraph'], row['SOURCE'], row['DEST'], row['rating'])
+    g.addEdge (catalog['delayGraph'], row['SOURCE'], row['DEST'], row['ARRIVAL_DELAY'])
 
 
 def countNodesEdges (catalog):
