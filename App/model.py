@@ -84,7 +84,6 @@ def depth_first_search(catalog,node):
             record={'nodo':li_node, 'stado':True, 'predecesor':node}
             map.put(catalog['visitedMap'],record['nodo'],record)
             depth_first_search(catalog,li_node)
-            print('en dfs')
             
 
 def countConnectedComponents (catalog):
@@ -93,12 +92,15 @@ def countConnectedComponents (catalog):
     """
     counter=0
     list_nodes=g.vertices(catalog['delayGraph'])
+    total= g.numVertex(catalog['delayGraph'])
     for i in range(1,lt.size(list_nodes)+1):
         node=lt.getElement(list_nodes,i)
         if not map.contains(catalog['visitedMap'],node):
             depth_first_search(catalog,node)
-            print('en cc')
             counter+=1
+        sub_total=map.size(catalog['visitedMap'])
+        if sub_total==total:
+            break
     return counter
 
 
