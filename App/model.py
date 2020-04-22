@@ -40,30 +40,29 @@ def newCatalog():
     """
     Inicializa el catálogo y retorna el catalogo inicializado.
     """
-    rgraph = g.newGraph(5500,compareByKey)
-    prime = nextPrime (g.numVertex(rgraph) * 2)
+    rgraph = g.newGraph(111.353,compareByKey)
+    prime = 111.353 * 2
     catalog = {'delayGraph':rgraph, 'visitedMap':None}
     rgraph['visitedMap'] = map.newMap(capacity=prime, maptype='PROBING', comparefunction=compareByKey)
     return catalog
 
-def addMark(catlog, source):
-    map.put(catalog['visitedMap'],source, {'marked':True,'edgeTo':None})
+
 
 
 def addReviewNode (catalog, row):
     """
     Adiciona un nodo para almacenar un libro o usuario 
     """
-    if not g.containsVertex(catalog['reviewGraph'], row['book_id']):
-        g.insertVertex (catalog['reviewGraph'], row['book_id'])
-    if not g.containsVertex(catalog['reviewGraph'], row['user_id']):
-        g.insertVertex (catalog['reviewGraph'], row['user_id'])
+    if not g.containsVertex(catalog['delayGraph'], row['SOURCE']):
+        g.insertVertex (catalog['delayGraph'], row['SOURCE'])
+    if not g.containsVertex(catalog['delayGraph'], row['DEST']):
+        g.insertVertex (catalog['delayGraph'], row['DEST'])
 
 def addReviewEdge (catalog, row):
     """
     Adiciona un enlace para almacenar una revisión
     """
-    g.addEdge (catalog['delayGraph'], row['book_id'], row['DEST'], row['rating'])
+    g.addEdge (catalog['delayGraph'], row['SOURCE'], row['DEST'], row['rating'])
 
 
 def countNodesEdges (catalog):
